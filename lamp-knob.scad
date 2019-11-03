@@ -1,8 +1,10 @@
 shaft_diameter = 6.1;  // measured, inexact because knurling
 shaft_length = 15;
-epsilon = 0.01;
 
 sleeve = shaft_diameter + 2 * 0.8;
+shaft_fit_stretch = 0.05;
+epsilon = 0.01;
+
 
 main();
 
@@ -13,17 +15,20 @@ module main() {
             hull() {
                 key_base() key_outer() cylinder(r=10, center=true);
                 
+                shaft_fit_stretch()
                 translate([0, 0, 5])
                 rotate([90, 0, 0])
                 cylinder(r=1, center=true);
 
             }
             
+            shaft_fit_stretch()
             hull() {
                 cylinder(d=sleeve, h=shaft_length, $fn=60);
                 translate([0, 0, shaft_length]) sphere(d=sleeve, $fn=60);
             }
         }
+        shaft_fit_stretch()
         translate([0, 0, -epsilon]) cylinder(d=shaft_diameter, h=shaft_length, $fn=30);
     }
     
@@ -36,6 +41,11 @@ module main() {
             ring(r=10 * s);
         }
     }
+}
+
+module shaft_fit_stretch() {
+    scale([1 + shaft_fit_stretch, 1 - shaft_fit_stretch * 0.5, 1])
+    children();
 }
 
 module ring(r=10) {
