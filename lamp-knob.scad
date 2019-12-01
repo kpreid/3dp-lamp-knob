@@ -49,6 +49,7 @@ module shaft_fit_stretch() {
 }
 
 module ring(r=10) {
+    scale([1, 1, 1.2])
     rotate_extrude()
     translate([r, 0, 0])
     rotate(360 / 16)
