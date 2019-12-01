@@ -1,8 +1,14 @@
-shaft_diameter = 6.1;  // measured, inexact because knurling
+// Diameter in mm of the shaft (inner diameter of the knob's socket). Adjustments will probably be required. Values that have worked for some lamps: 5.1, 6.1.
+shaft_diameter = 5.6;
+
+// Length in mm of the knob's socket for the shaft.
 shaft_length = 15;
 
-sleeve = shaft_diameter + 2 * 0.8;
+// Proportion of shaft_diameter by which to squash the socket out of round to aid in gripping the shaft. Zero is circular.
 shaft_fit_stretch = 0.05;
+
+/* [Hidden] */
+sleeve = shaft_diameter + 2 * 0.8;
 epsilon = 0.01;
 
 
